@@ -1,0 +1,22 @@
+﻿
+
+@{
+    ViewBag.Title = "銀行資訊";
+}
+
+<h2>銀行資訊-列表</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Ajax.BeginForm("Index", "客戶銀行資訊", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "dataList" }))
+{
+    <p>
+        @Html.AntiForgeryToken()
+        @Html.TextBox("KeyWord", null, new { placeholder = "請輸入銀行名稱或帳戶名稱" })
+        <input type="submit" value="搜尋" />
+    </p>
+}
+<div id="dataList">
+    @Html.Partial("_銀行資訊List")
+</div>

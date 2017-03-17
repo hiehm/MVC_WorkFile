@@ -1,0 +1,25 @@
+﻿
+
+@{
+    ViewBag.Title = "客戶資料列表";
+}
+
+<h2>客戶資料-列表</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Ajax.BeginForm("Index", "客戶資料", new AjaxOptions {HttpMethod="POST", UpdateTargetId = "dataList" }))
+{
+    <p>
+
+        @Html.AntiForgeryToken()
+        @Html.TextBox("KeyWord",null,new {placeholder="請輸入名稱或信箱" })
+        <input type="submit" value="搜尋" />
+
+    </p>
+  
+}
+<div id="dataList">
+    @Html.Partial("_客戶List")
+</div>
